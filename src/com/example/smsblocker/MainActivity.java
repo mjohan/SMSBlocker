@@ -2,6 +2,7 @@ package com.example.smsblocker;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.IntentFilter;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
@@ -10,6 +11,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        IntentFilter filter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
+        SMSReceiver smsReceiver = new SMSReceiver();
+        this.registerReceiver(smsReceiver, filter);
     }
 
 
