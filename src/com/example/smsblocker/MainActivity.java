@@ -15,6 +15,8 @@ public class MainActivity extends Activity {
         IntentFilter filter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
         SMSReceiver smsReceiver = new SMSReceiver();
         this.registerReceiver(smsReceiver, filter);
+
+        FilteredString.AddFilteredString(this, "Halo");
     }
 
 

@@ -1,5 +1,7 @@
 package com.example.smsblocker;
 
+import java.util.Set;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,8 +23,11 @@ public class SMSReceiver extends BroadcastReceiver {
 		String messageText = message.getMessageBody();
 		Log.i(TAG, messageText);
 
-		if (messageText.contains("Tes")) {
-			abortBroadcast();
+		Set<String> list = FilteredString.getFilteredStrings(context);
+		for (String text : list) {
+			if (messageText.contains(text)) {
+				abortBroadcast();
+			}
 		}
 	}
 
